@@ -21,6 +21,8 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+vim.keymap.set("n", "<C-h>", ":tabprevious<CR>")
+vim.keymap.set("n", "<C-l>", ":tabnext<CR>")
 
 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
