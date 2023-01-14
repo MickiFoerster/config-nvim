@@ -27,3 +27,4 @@ vim.keymap.set("n", "<C-l>", ":tabnext<CR>")
 
 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
