@@ -21,10 +21,10 @@ local sign = function(opts)
   })
 end
 
-sign({name = 'DiagnosticSignError', text = ''})
-sign({name = 'DiagnosticSignWarn', text = ''})
-sign({name = 'DiagnosticSignHint', text = ''})
-sign({name = 'DiagnosticSignInfo', text = ''})
+sign({name = 'DiagnosticSignError', text = 'E',texthl='DiagnosticSignError', linehl='', numhl='DiagnosticSignError' })
+sign({name = 'DiagnosticSignWarn', text = 'W', texthl='DiagnosticSignWarn', linehl='', numhl='DiagnosticSignWarn'})
+sign({name = 'DiagnosticSignHint', text = 'H', texthl='DiagnosticSignInfo', linehl='', numhl='DiagnosticSignInfo' })
+sign({name = 'DiagnosticSignInfo', text = 'I', texthl='DiagnosticSignHint', linehl='', numhl='DiagnosticSignHint'})
 
 vim.diagnostic.config({
     virtual_text = false,
