@@ -32,6 +32,9 @@ vim.keymap.set('n', '<leader>fvc', builtin.git_commits, {})
 vim.keymap.set('n', "<leader>td", builtin.lsp_definitions, {})
 vim.keymap.set('n', "<leader>tD", builtin.lsp_type_definitions, {})
 vim.keymap.set('n', "<leader>ti", builtin.lsp_implementations, {})
+vim.keymap.set('n', "<leader>tr", builtin.lsp_references, {})
+vim.keymap.set('n', "<leader>tw", builtin.lsp_workspace_symbols, {})
+
 
 -- builtin.lsp_references	Lists LSP references for word under the cursor
 -- builtin.lsp_incoming_calls	Lists LSP incoming calls for word under the cursor
