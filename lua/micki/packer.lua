@@ -70,16 +70,4 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/vim-vsnip'
 
-  -- for debugging
-  use 'puremourning/vimspector'
-
-  use 'voldikss/vim-floaterm'
-
-  --use {
-  --    'numToStr/Comment.nvim',
-  --    config = function()
-  --        require('Comment').setup()
-  --    end
-  --}
-
 end)
