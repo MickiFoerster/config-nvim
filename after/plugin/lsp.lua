@@ -53,4 +53,6 @@ vim.keymap.set('n', "<leader>vrr", function()  vim.lsp.buf.references()  end, op
 vim.keymap.set('n', "<leader>vrn", function()  vim.lsp.buf.rename()  end, opts)
 vim.keymap.set('i', "<C-h>", function()  vim.lsp.buf.signature_help()  end, opts)
 
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+
 lsp.setup()
