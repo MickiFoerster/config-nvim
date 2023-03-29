@@ -9,3 +9,5 @@ iabbrev dockerfile_rustbuilder FROM rust:1.67.1 AS builder<CR><CR>#COPY Cargo.to
 
 
 set nofoldenable
+
+" let &colorcolumn="3," . join(range(10, 999, 5), ",") 
