@@ -13,3 +13,7 @@ iabbrev tracing_subscribe tracing_subscriber::fmt::fmt()<CR>.with_env_filter(<CR
 set nofoldenable
 
 " let &colorcolumn="3," . join(range(10, 999, 5), ",") 
+
+" toggle git blame info with :GitBlameToggle
+let g:gitblame_enabled = 0
+

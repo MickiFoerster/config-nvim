@@ -12,14 +12,14 @@ vim.keymap.set("n", "<C-x>", vim.cmd.Ex)
 --vim.keymap.set("n", "n", "nzzzv")
 --vim.keymap.set("n", "N", "Nzzzv")
 
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
-vim.keymap.set("v", "<C-y>", "\"+y")
-vim.keymap.set("n", "<leader>Y", "\"+Y")
-vim.keymap.set("n", "Y", "yy")
-
-vim.keymap.set("n", "<leader>d", "\"_d")
-vim.keymap.set("v", "<leader>d", "\"_d")
+--vim.keymap.set("n", "<leader>y", "\"+y")
+--vim.keymap.set("v", "<leader>y", "\"+y")
+--vim.keymap.set("v", "<C-y>", "\"+y")
+--vim.keymap.set("n", "<leader>Y", "\"+Y")
+--vim.keymap.set("n", "Y", "yy")
+--
+--vim.keymap.set("n", "<leader>d", "\"_d")
+--vim.keymap.set("v", "<leader>d", "\"_d")
 
 --vim.keymap.set("i", "<C-c>", "<Esc>")
 
@@ -28,4 +28,3 @@ vim.keymap.set("n", "<C-l>", ":tabnext<CR>")
 
 
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-

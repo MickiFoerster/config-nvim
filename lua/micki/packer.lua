@@ -74,4 +74,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/vim-vsnip'
 
+  -- git blame info
+  use 'f-person/git-blame.nvim'
+
 end)
