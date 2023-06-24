@@ -3,6 +3,7 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
+    'anakin_language_server',
     'tsserver',
     'eslint',
     'gopls',
