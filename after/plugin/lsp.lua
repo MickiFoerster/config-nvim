@@ -7,6 +7,7 @@ lsp.ensure_installed({
     'eslint',
     'gopls',
     'clangd',
+    'pyright',
     'rust_analyzer'
 })
 
