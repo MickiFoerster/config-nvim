@@ -54,7 +54,7 @@ vim.keymap.set('n', "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
 vim.keymap.set('i', "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
 -- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-vim.cmd [[autocmd BufWritePre *\(.py\|.libsonnet|.sonnet|.proto\)\@<!  lua vim.lsp.buf.format()]]
+vim.cmd [[autocmd BufWritePre *\(.py\|.libsonnet\|.sonnet\|.proto\)\@<!  lua vim.lsp.buf.format()]]
 
 
 lsp.setup()
