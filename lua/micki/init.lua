@@ -3,59 +3,37 @@ require("micki.set")
 require("micki.remap")
 
 local function format_python()
-    -- Save cursor position
-    local save_cursor = vim.fn.getcurpos()
-
-    -- Get buffer content
-    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
-    local content = table.concat(lines, "\n")
-
-    -- Format using Ruff via stdin/stdout
-    local result = vim.fn.system('ruff format -', content)
-
-    if vim.v.shell_error == 0 then
-        -- Split the result into lines
-        local formatted_lines = {}
-        for line in result:gmatch("[^\r\n]+") do
-            table.insert(formatted_lines, line)
-        end
-
-        -- Replace buffer content with formatted content
-        vim.api.nvim_buf_set_lines(0, 0, -1, false, formatted_lines)
-
-        -- Restore cursor position
-        vim.fn.setpos('.', save_cursor)
-    else
-        vim.notify('Error formatting Python file with Ruff:\n' .. result, vim.log.levels.ERROR)
-    end
+	vim.cmd('silent !black %')
 end
 
--- Set up the autocommand
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.py",
-    callback = format_python,
-})
+-- Function to format Python code using black
+local function format_python()
+    -- Save current cursor position
+    local save_cursor = vim.fn.getcurpos()
 
+    -- Create a temporary file
+    local tmp = vim.fn.tempname()
 
--- Set up the autocommand
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.py",
-    callback = format_python,
-})
+    -- Write current buffer to temporary file
+    vim.cmd('silent write ' .. tmp)
 
+    -- Format the temporary file
+    local format_cmd = 'black -q ' .. tmp
+    local formatted = vim.fn.system(format_cmd)
 
--- Set up the autocommand to run before saving
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.py",
-    callback = format_python,
-})
-
-
--- Set up the autocommand
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.py",
-    callback = format_python,
-})
+    if vim.v.shell_error == 0 then
+        -- Read the formatted content
+        local lines = vim.fn.readfile(tmp)
+        -- Replace buffer contents with formatted code
+        vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+        -- Restore cursor position
+        vim.fn.setpos('.', save_cursor)
+        -- Remove the temporary file
+        vim.fn.delete(tmp)
+    else
+        vim.notify('Error formatting Python file', vim.log.levels.ERROR)
+    end
+end
 
 -- Create an autocommand group for Python formatting
 vim.api.nvim_create_augroup('PythonFormatting', { clear = true })
