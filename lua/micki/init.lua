@@ -3,35 +3,23 @@ require("micki.set")
 require("micki.remap")
 
 local function format_python()
-	vim.cmd('silent !black %')
-end
-
--- Function to format Python code using black
-local function format_python()
-    -- Save current cursor position
+    -- Save cursor position
     local save_cursor = vim.fn.getcurpos()
 
-    -- Create a temporary file
-    local tmp = vim.fn.tempname()
+    -- Get the current file path
+    local file = vim.fn.expand('%')
 
-    -- Write current buffer to temporary file
-    vim.cmd('silent write ' .. tmp)
-
-    -- Format the temporary file
-    local format_cmd = 'black -q ' .. tmp
-    local formatted = vim.fn.system(format_cmd)
+    -- Format using Ruff
+    local format_cmd = 'ruff format ' .. vim.fn.shellescape(file)
+    local result = vim.fn.system(format_cmd)
 
     if vim.v.shell_error == 0 then
-        -- Read the formatted content
-        local lines = vim.fn.readfile(tmp)
-        -- Replace buffer contents with formatted code
-        vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+        -- Reload buffer to reflect formatted content
+        vim.cmd('edit!')
         -- Restore cursor position
         vim.fn.setpos('.', save_cursor)
-        -- Remove the temporary file
-        vim.fn.delete(tmp)
     else
-        vim.notify('Error formatting Python file', vim.log.levels.ERROR)
+        vim.notify('Error formatting Python file with Ruff:\n' .. result, vim.log.levels.ERROR)
     end
 end
 
